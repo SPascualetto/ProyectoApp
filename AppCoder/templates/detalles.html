@@ -1,0 +1,24 @@
+{% extends 'base.html'%}
+{% block title %} {{ post.Carrera }} {% endblock %}
+
+{% block content %}
+
+
+
+<h1>{{ post.Titulo }} </h1>
+<small> By: 
+    {{ post.Nombre }}  
+    {{ post.post_date }} -
+    {% if user.is_authenticated %}
+    <a href="{% url 'modificarposteo' post.pk  %}">(Editar)</a> 
+    <a href="{% url 'borrarposteo' post.pk  %}">(Borrar)</a>
+    {% endif %}
+</small><br/>
+<hr>
+<br/>
+{{ post.Cuerpo }}
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+{% endblock %}
